@@ -1,0 +1,363 @@
+options:
+  parameters:
+    author: Diego Neves
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: Implementation of a signal generator
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: SG
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: SG
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 36.0]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: SDR_1
+  id: variable
+  parameters:
+    comment: ''
+    value: '"0000000000000000a06063c82535465f"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1104, 28.0]
+    rotation: 0
+    state: true
+- name: SDR_2
+  id: variable
+  parameters:
+    comment: ''
+    value: '"000000000000000057b068dc22214f63"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1104, 92.0]
+    rotation: 0
+    state: true
+- name: auxiliar_filename
+  id: variable
+  parameters:
+    comment: ''
+    value: '"test.txt"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1312, 92.0]
+    rotation: 0
+    state: true
+- name: filename_config
+  id: variable
+  parameters:
+    comment: ''
+    value: my_mod.set_filenames(full_path, auxiliar_filename, raw_result_filename)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1312, 220.0]
+    rotation: 0
+    state: true
+- name: freq
+  id: variable
+  parameters:
+    comment: ''
+    value: my_mod.sweeper(fun_probe)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [64, 284.0]
+    rotation: 0
+    state: true
+- name: frequency_config
+  id: variable
+  parameters:
+    comment: ''
+    value: my_mod.set_frequency(frequency_start, frequency_stop, frequency_step)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [912, 220.0]
+    rotation: 0
+    state: true
+- name: frequency_start
+  id: variable
+  parameters:
+    comment: ''
+    value: 2.18e9
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [912, 28.0]
+    rotation: 0
+    state: true
+- name: frequency_step
+  id: variable
+  parameters:
+    comment: ''
+    value: 1e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [912, 156.0]
+    rotation: 0
+    state: true
+- name: frequency_stop
+  id: variable
+  parameters:
+    comment: ''
+    value: 2.74e9
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [912, 92.0]
+    rotation: 0
+    state: true
+- name: full_path
+  id: variable
+  parameters:
+    comment: ''
+    value: '"/home/diego/Downloads/hack_aut/hack_both/"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1312, 28.0]
+    rotation: 0
+    state: true
+- name: fun_probe
+  id: variable_function_probe
+  parameters:
+    block_id: prob_block
+    comment: ''
+    function_args: ''
+    function_name: level
+    poll_rate: '1'
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 156.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_levelgauge_0
+  id: qtgui_levelgauge
+  parameters:
+    affinity: ''
+    alias: ''
+    backgroundColor: default
+    barColor: default
+    comment: ''
+    fontColor: default
+    gui_hint: ''
+    isVertical: 'False'
+    label: Frequency
+    maximum: frequency_stop/1e6
+    minimum: frequency_start/1e6
+    msize: '100'
+    position: '1'
+    scaleFactor: '1'
+    showValue: 'True'
+    type: real
+    value: freq/1e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [904, 300.0]
+    rotation: 0
+    state: true
+- name: raw_result_filename
+  id: variable
+  parameters:
+    comment: ''
+    value: '"result.txt"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1312, 156.0]
+    rotation: 0
+    state: true
+- name: receiver_SDR
+  id: variable
+  parameters:
+    comment: ''
+    value: '2'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1104, 156.0]
+    rotation: 0
+    state: true
+- name: receiver_config
+  id: variable
+  parameters:
+    comment: ''
+    value: my_mod.set_receiver_serial_number(SDR_1, SDR_2, receiver_SDR)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1104, 220.0]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '8000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [112, 196.0]
+    rotation: 0
+    state: enabled
+- name: analog_sig_source_x_0_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    freq: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    type: float
+    waveform: analog.GR_CONST_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [240, 108.0]
+    rotation: 0
+    state: enabled
+- name: analog_sig_source_x_0_1
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    freq: freq
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    type: complex
+    waveform: analog.GR_COS_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [240, 292.0]
+    rotation: 0
+    state: true
+- name: my_mod
+  id: epy_module
+  parameters:
+    alias: ''
+    comment: ''
+    source_code: "def set_frequency(f_0, f_1, step):\n\tglobal f, f0, f1, df\n\tdf\
+      \ = step\n\tf0 = f_0\n\tf1 = f_1\n\tf = f_0 - step\n\treturn f_0\n\ndef set_receiver_serial_number(sf_1,\
+      \ sf_2, sf_id):\n\tglobal serial_number\n\tif sf_id == 1:\n\t\tserial_number\
+      \ = sf_1\n\telif sf_id == 2:\n\t\tserial_number = sf_2\n\treturn serial_number\n\
+      \ndef set_filenames(full_path, aux_name, result_name):\n\tglobal filename, result_filename\n\
+      \tfilename = full_path + aux_name\n\tresult_filename = full_path + result_name\t\
+      \n\treturn \"Done\"\n\ndef sweeper(prob_lvl):\n\tglobal f, f1, df, f0\n\n\t\
+      read_receptor(f)\n\tif prob_lvl:\n\t\tf += df\n\t\n\tif f >= f1:\n\t\tf = f0\n\
+      \t\t\n\treturn f\n\t\ndef read_receptor(f):\n\tglobal serial_number\n\timport\
+      \ os\n\n\tlow_frequency = int(f/1e6) - 10\n\thigh_frequency = int(f/1e6) + 10\n\
+      \tnumber_of_sweeps = 3\n\n\tfile_name = \"/home/diego/Downloads/hack_aut/hack_both/test.txt\"\
+      \n\tcommand = f'hackrf_sweep -f {low_frequency}:{high_frequency} -N {number_of_sweeps}\
+      \ -d {serial_number} -r {file_name}' \n\n\tos.system(command)\n\n\tmargin =\
+      \ 3e6\n\tanalyzer_file = open(\"/home/diego/Downloads/hack_aut/hack_both/test.txt\"\
+      , \"r\")\n\tresults = analyzer_file.readlines()\n\n\tresult_file = open(\"/home/diego/Downloads/hack_aut/hack_both/result.txt\"\
+      , \"a\")\n\tfor line in results:\n\t\tline = line.split(', ')\n\t\tlf = int(line[2])\n\
+      \t\tdf = int(float(line[4]))\n\n\t\tfor i in range(5):\n\t\t\tresult_file.write(str(lf\
+      \ + i*df) + \", \" + str(float(line[6 + i])) + \"\\n\")\n\n\n\n\n\n\n\n\n\n\n\
+      \n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\n"
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [704, 36.0]
+    rotation: 0
+    state: true
+- name: prob_block
+  id: blocks_probe_signal_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    type: float
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [496, 108.0]
+    rotation: 0
+    state: enabled
+- name: soapy_hackrf_sink_0
+  id: soapy_hackrf_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: 'False'
+    bandwidth: '0'
+    center_freq: freq
+    comment: ''
+    dev_args: ''
+    samp_rate: samp_rate
+    type: fc32
+    vga: '30'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [504, 336.0]
+    rotation: 0
+    state: true
+
+connections:
+- [analog_sig_source_x_0_0, '0', prob_block, '0']
+- [analog_sig_source_x_0_1, '0', soapy_hackrf_sink_0, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.5.1
